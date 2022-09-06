@@ -19,9 +19,14 @@ Vector2 SeparationRule::computeForce(const std::vector<Boid*>& neighborhood, Boi
         for (int i = 0; i < countCloseFlockmates; i++)
         {
             //get distance from this boid to neighbordhood boid
-            Vector2 distance = boid->transform.position - neighborhood[i]->transform.position;
+            Vector2 check = boid->transform.position - neighborhood[i]->transform.position;
 
+            float distance = check.getDistance(boid->transform.position, neighborhood[i]->transform.position);
             //add force if boid is within range
+            if (distance < desiredDistance)
+            {
+                separatingForce += check;
+            }
             
         }
 
