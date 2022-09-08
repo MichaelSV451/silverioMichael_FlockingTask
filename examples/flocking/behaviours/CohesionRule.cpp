@@ -25,7 +25,7 @@ Vector2 CohesionRule::computeForce(const std::vector<Boid*>& neighborhood, Boid*
         centerOfMass = centerOfMass / countCloseFlockmates;
 
         //then apply force in direction of center of mass
-        cohesionForce = (boid->getPosition() - centerOfMass).normalized();
+        cohesionForce = (centerOfMass - boid->getPosition()).normalized();
     }
 
     return cohesionForce;
