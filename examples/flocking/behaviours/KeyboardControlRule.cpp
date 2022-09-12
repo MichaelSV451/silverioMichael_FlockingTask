@@ -4,12 +4,13 @@
 
 Vector2 KeyboardControlRule::computeForce(const std::vector<Boid*>& neighborhood, Boid* boid) {
 
+    //get input
     ImGui::SetCurrentContext(world->engine->imGuiContext);
     ImGuiIO& io = ImGui::GetIO();
 
     Vector2 keyboardForce = Vector2::zero();
 
-    //move in direction of arrow keys
+    //move in direction of arrow keys by applying directional force
     if (io.KeysDown[ImGuiKey_::ImGuiKey_RightArrow])
     {
         keyboardForce += Vector2::right();
@@ -32,14 +33,3 @@ Vector2 KeyboardControlRule::computeForce(const std::vector<Boid*>& neighborhood
 
 	return keyboardForce;
 }
-
-//bool KeyboardControlRule::drawImguiRuleExtra() {
-//    ImGui::SetCurrentContext(world->engine->imGuiContext);
-//    bool valusHasChanged = false;
-//
-//    if (ImGui::DragFloat("Desired Follow Distance", &desiredDistanceMin, 0.05f)) {
-//        valusHasChanged = true;
-//    }
-//
-//    return valusHasChanged;
-//}
