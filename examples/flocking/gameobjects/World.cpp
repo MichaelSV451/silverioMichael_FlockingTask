@@ -9,6 +9,7 @@
 #include "../behaviours/MouseInfluenceRule.h"
 #include "../behaviours/BoundedAreaRule.h"
 #include "../behaviours/WindRule.h"
+#include "../behaviours/KeyboardControlRule.h"
 
 #if defined(_WIN32)
 #include "Windows.h"
@@ -27,6 +28,7 @@ void World::initializeRules() {
     boidsRules.emplace_back(std::make_unique<MouseInfluenceRule>(this, 2.f));
     boidsRules.emplace_back(std::make_unique<BoundedAreaRule>(this, 20, 8.f, false));
     boidsRules.emplace_back(std::make_unique<WindRule>(this, 1.f, 6.f, false));
+    boidsRules.emplace_back(std::make_unique<KeyboardControlRule>(this, 10.0f, false));
 
     //Starting weights are saved as defaults
     defaultWeights.clear();
